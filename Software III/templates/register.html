@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>LOGIN TOOLHUB</title>
+    <title>REGISTRO TOOLHUB</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto&display=swap">
     <link rel="stylesheet" type="text/css" href="/static/style.css">
      <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
@@ -21,11 +21,11 @@
         }
         
 
-        .login-container {
+        .register-container {
             text-align: center;
             width: 400px; /* Ajusta el ancho según tus necesidades */
         }
-        .login-container input {
+        .register-container input {
             vertical-align: middle; /* Alinea los campos de texto verticalmente */
             
         }
@@ -40,22 +40,18 @@
     <div class="rectangulo">
         <h1 style="margin-top: 15px;">TOOLHUB</h1>
     </div>
-    <div class="login-container">
-        <h2 style= "margin-top: 40px";>INICIO DE SESION</h2> 
-        
-        <form action="/principal" method="post" style="margin-top: 30px;">
+    <div class="register-container">
+        <h2 style= "margin-top: 40px";>REGISTRO</h2>
+        <form action="/login" method="post" style="margin-top: 30px;">
             <label for="correo">Correo Electronico:</label>
             <input type="email" class="form-control form-control-sm " id="correo" name="correo" required>
             <label for="contrasena">Contraseña:</label>
             <input type="password" class="form-control form-control-sm " id="contrasena" name="contrasena" required>
+            <label for="contrasena">Nombre de Usuario:</label>
+            <input type="text" class="form-control form-control-sm " id="nombre" name="nombre" required>
             
-            <button type="submit" class="btn btn-primary boton" style="margin-top: 15px; background-color: #546b96; border: 1px solid #546b96;">Iniciar sesión</button>
+            <button type="submit" class="btn btn-primary boton" style="margin-top: 15px; background-color: #546b96; border: 1px solid #546b96;">Registrarse</button>
             
         </form>
-        <div class="centrar-Horizontal">
-            <a href="/principal" class="boton btn btn-primary" style="margin-top: 5px; background-color: #546b96; border: 1px solid #546b96;">Iniciar como Invitado</a>
-            <a href="/register" class="btn btn-primary" style="margin-top: 5px; margin-left: 5px; background-color: #546b96; border: 1px solid #546b96;">Registrarse</a>
-        </div>
     </div>
 </body>
-</html>

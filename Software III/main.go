@@ -16,6 +16,7 @@ func main() {
 
 	r.GET("/login", handlers.LoginPage)
 	r.GET("/principal", handlers.PrincipalPage)
+	r.GET("/register", handlers.RegisterPage)
 
 	r.POST("/login", handlers.Login)
 
