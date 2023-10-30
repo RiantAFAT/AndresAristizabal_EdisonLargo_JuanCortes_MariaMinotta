@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>LOGIN TOOLHUB</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto&display=swap">
+    <link rel="stylesheet" type="text/css" href="/static/style.css">
+     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: rgb(223, 223, 223);
+            position: relative;
+            font-family: 'Roboto', sans-serif;
+        }
+        
+
+        .login-container {
+            text-align: center;
+            width: 400px; /* Ajusta el ancho según tus necesidades */
+        }
+        .login-container input {
+            vertical-align: middle; /* Alinea los campos de texto verticalmente */
+            
+        }
+        
+        h1{
+            color: rgb(223, 223, 223);
+        }
+    </style>
+    
+</head>
+<body>
+    <div class="rectangulo">
+        <h1 style="margin-top: 15px;">TOOLHUB</h1>
+    </div>
+    <div class="login-container">
+        <h2 style= "margin-top: 40px";>INICIO DE SESION</h2> 
+        
+        <form action="/login" method="post" style="margin-top: 30px;">
+            <label for="correo">Correo Electronico:</label>
+            <input type="email" class="form-control form-control-sm " id="correo" name="correo" required>
+            <label for="contrasena">Contraseña:</label>
+            <input type="password" class="form-control form-control-sm " id="contrasena" name="contrasena" required>
+            
+            <button type="submit" class="btn btn-primary boton" style="margin-top: 15px; background-color: #546b96; border: 1px solid #546b96;">Iniciar sesión</button>
+            
+        </form>
+        <div class="centrar-Horizontal">
+            <button href="/principal" class="boton btn btn-primary" style="margin-top: 5px; background-color: #546b96; border: 1px solid #546b96;">Iniciar como Invitado</b>
+            <button href="/principal" class="btn btn-primary" style="margin-top: 5px; margin-left: 5px; background-color: #546b96; border: 1px solid #546b96;">Registrarse</b>
+        </div>
+    </div>
+</body>
+</html>

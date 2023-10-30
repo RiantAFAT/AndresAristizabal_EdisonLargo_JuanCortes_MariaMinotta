@@ -1,0 +1,27 @@
+
+.rectangulo {
+    width: 100%;
+    height: 80px; /* Ajusta la altura según tus preferencias */
+    background-color: #546b96; /* Color de fondo del rectángulo */
+    position: absolute;
+    top: 0;
+    left: 0;
+    text-align: center;
+}
+.fondo {
+    background-color: rgb(223, 223, 223); /* Establecer el fondo de la página*/
+}
+
+
+.mi-boton {
+    background-color: #546b96; /* Cambia el color de fondo del botón */
+    color: rgb(223, 223, 223); /* Cambia el color del texto del botón */
+    /*border: 1px solid #546b96; /* Cambia el color del borde y el grosor */
+}
+.centrar-Horizontal {
+    text-align: center;
+}
+.boton:hover {
+    background-color: #e74c3c; /* Cambia el color de fondo cuando pasas el mouse sobre el botón */
+    color: rgb(223, 223, 223); /* Cambia el color del texto cuando pasas el mouse sobre el botón */
+}
