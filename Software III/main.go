@@ -6,7 +6,7 @@ import (
 	"log"
 
 	"github.com/gin-gonic/gin"
-	_ "github.com/mattn/go-sqlite3"
+	_ "github.com/go-sql-driver/mysql"
 )
 
 type User struct {
@@ -17,20 +17,39 @@ type User struct {
 }
 
 func dbConn() (db *sql.DB) {
-	db, err := sql.Open("sqlite3", "C:/Users/bklg1/OneDrive/Escritorio/Escritorio/Universidad/sotfware proyecto/AndresAristizabal_EdisonLargo_JuanCortes_MariaMinotta/Software III/base de datos/basededatos.db")
+	db, err := sql.Open("mysql", "/base_de_datos/ToolHub.db")
 
-	db.Exec("CREATE TABLE IF NOT EXISTS usuario (id INTEGER PRIMARY KEY AUTOINCREMENT,nombre VARCHAR(30) NOT NULL,correo VARCHAR(30) NOT NULL,contraseña VARCHAR(30) NOT NULL )")
+	db.Exec("CREATE TABLE IF NOT EXISTS Usuario (nombre VARCHAR(30) NOT NULL,correo VARCHAR(30) NOT NULL,contraseña VARCHAR(30) NOT NULL )")
 	if err != nil {
 		panic(err.Error())
 	}
 	log.Println("Bases de datos conectada")
 
 	return db
+
+}
+func OpenConnection() (db *sql.DB) {
+	// Configuración de la conexión
+	dsn := "root:root@tcp(localhost:3306)/ToolHub"
+	db, err := sql.Open("mysql", dsn)
+	if err != nil {
+		// Manejar el error
+		log.Println("openerror")
+		panic(err.Error())
+	}
+	err = db.Ping()
+	if err != nil {
+		// Manejar el error
+		log.Println("error ping")
+	}
+	//db.Exec("INSERT INTO Usuario (nombre, correo, contraseña) VALUES (?, ?, ?)", "Hernan", "correo@example.com", "root")
+	return db
 }
 
 func main() {
 
-	db := dbConn()
+	//db := dbConn()
+	db := OpenConnection()
 
 	r := gin.Default()
 
@@ -42,10 +61,14 @@ func main() {
 	r.GET("/register", handlers.RegisterPage)
 
 	r.POST("/login", handlers.Login)
+	r.POST("/registrarUsuario", func(c *gin.Context) {
+		handlers.RegistrarUsuario(c, db)
+	})
 
 	err := r.Run(":8080")
 	if err != nil {
 		log.Fatal(err)
 	}
+
 	defer db.Close()
 }
