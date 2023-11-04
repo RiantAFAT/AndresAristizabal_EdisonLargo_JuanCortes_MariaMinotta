@@ -25,3 +25,11 @@
     background-color: #e74c3c; /* Cambia el color de fondo cuando pasas el mouse sobre el botón */
     color: rgb(223, 223, 223); /* Cambia el color del texto cuando pasas el mouse sobre el botón */
 }
+
+.custom-line {
+    color: #007bff; /* Cambia el color de la línea a azul (#007bff) */
+    border: none; /* Elimina cualquier borde */
+    border-top: 10px solid #007bff; /* Establece el grosor de la línea a 2 píxeles */
+    width: 50%; /* Ajusta la longitud de la línea (puedes usar porcentaje o píxeles) */
+    margin: 20px auto; /* Centra horizontalmente y agrega un margen superior e inferior */
+}
