@@ -40,7 +40,13 @@ type Producto struct {
 }
 
 var Productos = []Producto{
-	Producto{"ChatGpt", "un modelo de lenguaje desarrollado por OpenAI.Estoy diseñado para comprender y generar texto en lenguaje natural en una variedad de temas y contextos", 4.5, "/static/imagenes/Chatgpt.png"},
-	Producto{"Producto 2", "Descripción del producto 2", 3.5, "product2.jpg"},
+	{"ChatGpt", "un modelo de lenguaje desarrollado por OpenAI.Estoy diseñado para comprender y generar texto en lenguaje natural en una variedad de temas y contextos", 4.5, "/static/imagenes/Chatgpt.png"},
+	{"ChatSonic", "es un chatbot de inteligencia artificial desarrollado por Neuroflash, una empresa de IA con sede en España. Se basa en la tecnología GPT, la misma que se utiliza en ChatGPT, \n y está entrenado con un conjunto de datos masivo de texto y código", 3.5, "/static/imagenes/ChatSonic.jpg"},
+	{"Claude", "es un asistente de IA desarrollado por Anthropic, una empresa de IA con sede en Estados Unidos. Se basa en el modelo de lenguaje Claude 2, que está entrenado con un conjunto de datos masivo de texto y código", 4.0, "/static/imagenes/Claude.png"},
+	{"BingCreator", "es una herramienta de IA de Microsoft que permite a los usuarios crear contenido creativo, como imágenes, texto y música. Se basa en el modelo de lenguaje de gran tamaño DALL-E 2, que está entrenado con un conjunto de datos masivo de imágenes y texto", 4.8, "/static/imagenes/BingCreator.jpg"},
+	{"ChatPDF", "es un chatbot de IA que puede resumir y responder a preguntas sobre cualquier PDF. Es una herramienta útil para estudiantes, investigadores y profesionales que necesitan acceder rápidamente a la información de los documentos PDF", 4.0, "/static/imagenes/ChatPDF.jpg"},
+	{"bard", "es un gran modelo de lenguaje (LLM) de Google AI, entrenado en un conjunto de datos masivo de texto y código. Puede generar texto, traducir idiomas, escribir diferentes tipos de contenido creativo y responder a tus preguntas de manera informativa", 3.8, "/static/imagenes/bard.png"},
+	{"AIVA AI", "es un asistente de composición musical impulsado por IA desarrollado por AIVA Technologies. Utiliza algoritmos de aprendizaje automático para generar piezas musicales originales en varios géneros, incluidos música clásica, jazz, pop y electrónica", 2.8, "/static/imagenes/AIVA AI.png"},
+
 	// Agrega más productos según tus necesidades
 }
