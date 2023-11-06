@@ -55,6 +55,8 @@ func main() {
 		fmt.Print("usuario logueado: ", usuarioLog, " ")
 	})
 
+	r.POST("/principal", handlers.PrincipalPage)
+
 	err := r.Run(":8080")
 	if err != nil {
 		log.Fatal(err)
