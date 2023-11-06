@@ -40,18 +40,44 @@
     <div class="rectangulo">
         <h1 style="margin-top: 15px;">TOOLHUB</h1>
     </div>
+    
     <div class="register-container">
         <h2 style= "margin-top: 40px";>REGISTRO</h2>
-        <form action="/registrarUsuario" method="POST" style="margin-top: 20px;">
+        <form id="registroForm" action="/registrarUsuario" method="POST" style="margin-top: 20px;">
             <label for="correo">Correo Electronico:</label>
             <input type="email" class="form-control form-control-sm " id="correo" name="correo" required>
             <label for="contraseña">Contraseña:</label>
             <input type="text" class="form-control form-control-sm " id="contraseña" name="contraseña" required>
-            <label for="contrasena">Nombre de Usuario:</label>
+            <label for="nombre">Nombre de Usuario:</label>
             <input type="text" class="form-control form-control-sm " id="nombre" name="nombre" required>
             
-            <button type="submit" class="btn btn-primary boton" style="margin-top: 15px; background-color: #546b96; border: 1px solid #546b96;">Registrarse</button>
-            
+            <button type="submit"  class="btn btn-primary boton" style="margin-top: 15px; background-color: #546b96; border: 1px solid #546b96;">Registrarse</button>
         </form>
+        <div id="mensaje"></div>
     </div>
+    <script>
+        // Agrega un controlador de eventos al formulario para capturar el envío
+        document.getElementById("registroForm").addEventListener("submit", function(event) {
+            event.preventDefault(); // Evita el envío del formulario por defecto
+    
+            // Realiza la solicitud al servidor
+            fetch("/registrarUsuario", {
+                method: "POST",
+                body: new FormData(event.target), // Envía los datos del formulario
+            })
+            .then(response => response.json())
+            .then(data => {
+                // Muestra un mensaje de confirmación
+                if (data.exito) {
+                    document.getElementById("mensaje").innerHTML = "Registro exitoso.";
+                    // Redirige a otra página después de 5 segundos
+                    setTimeout(function() {
+                        window.location.href = "login";
+                    }, 3000);
+                } else {
+                    document.getElementById("mensaje").innerHTML = "El correo ya se encuentra registrado.";
+                }
+            });
+        });
+    </script>
 </body>

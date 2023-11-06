@@ -3,31 +3,13 @@ package main
 import (
 	"ToolHub/handlers"
 	"database/sql"
+	"fmt"
 	"log"
 
 	"github.com/gin-gonic/gin"
 	_ "github.com/go-sql-driver/mysql"
 )
 
-type User struct {
-	ID         int
-	Nombre     string
-	correo     string
-	Contraseña string
-}
-
-func dbConn() (db *sql.DB) {
-	db, err := sql.Open("mysql", "/base_de_datos/ToolHub.db")
-
-	db.Exec("CREATE TABLE IF NOT EXISTS Usuario (nombre VARCHAR(30) NOT NULL,correo VARCHAR(30) NOT NULL,contraseña VARCHAR(30) NOT NULL )")
-	if err != nil {
-		panic(err.Error())
-	}
-	log.Println("Bases de datos conectada")
-
-	return db
-
-}
 func OpenConnection() (db *sql.DB) {
 	// Configuración de la conexión
 	dsn := "root:root@tcp(localhost:3306)/ToolHub"
@@ -47,8 +29,8 @@ func OpenConnection() (db *sql.DB) {
 }
 
 func main() {
+	var usuarioLog int
 
-	//db := dbConn()
 	db := OpenConnection()
 
 	r := gin.Default()
@@ -60,9 +42,16 @@ func main() {
 	r.GET("/principal", handlers.PrincipalPage)
 	r.GET("/register", handlers.RegisterPage)
 
-	r.POST("/login", handlers.Login)
 	r.POST("/registrarUsuario", func(c *gin.Context) {
 		handlers.RegistrarUsuario(c, db)
+	})
+	r.POST("/loguearUsuario", func(c *gin.Context) {
+		usuarioLog = handlers.LoguearUsuario(c, db)
+		fmt.Print("usuario logueado: ", usuarioLog, " ")
+	})
+	r.POST("/loguearInvitado", func(c *gin.Context) {
+		usuarioLog = handlers.LoguearInvitado(c, db)
+		fmt.Print("usuario logueado: ", usuarioLog, " ")
 	})
 
 	err := r.Run(":8080")
