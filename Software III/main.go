@@ -39,6 +39,7 @@ func main() {
 	r.GET("/login", handlers.LoginPage)
 	r.GET("/principal", handlers.PrincipalPage)
 	r.GET("/register", handlers.RegisterPage)
+	r.GET("/detalles/:nombre", handlers.DetallesPage)
 
 	r.POST("/login", handlers.Login)
 	r.POST("/registrarUsuario", func(c *gin.Context) {

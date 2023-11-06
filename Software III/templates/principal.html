@@ -11,6 +11,7 @@
             margin-right: 20px; /* Espacio entre productos */
              width: 300px;
              text-align: center;
+             margin-top: 20px;
 
         }
         
@@ -52,11 +53,12 @@
                     <p>{{.Result.Descripcion}}</p>  
                     <p>Calificacion: ✰{{.Result.Calificacion}}</p>
                     <button class="btn btn-primary">Añadir a Favoritos</button>
+                    <a href="/detalles/.Result.Nombre" class="btn btn-primary">Detalles</a>
                     <hr width="122%">
                 </article>
                 {{else}}
                 <div style="display: none;" >
-                    <p>No se encontraron productos</p>
+                    <p>No se encontraron la herramienta</p>
                 </div>
                 
                 {{end}}
@@ -82,7 +84,7 @@
                  una variedad de temas y contextos</p>
                 <p>Calificacion: 4.5 ✰ </p>
                 <button class="btn btn-primary">Añadir a Favoritos</button>
-                <button class="btn btn-primary">Detalles</button>
+                <a href="/detalles/ChatGpt" class="btn btn-primary">Detalles</a>
             </article>
 
             <article class="product">
@@ -97,7 +99,7 @@
                 de texto y código</p>
                 <p>Calificacion: 3.5✰</p>
                 <button class="btn btn-primary">Añadir a Favoritos</button>
-                <button class="btn btn-primary">Detalles</button>
+                <a href="/detalles/ChatSonic" class="btn btn-primary">Detalles</a>
             </article>
 
         
@@ -113,7 +115,7 @@
             datos masivode texto y código</p>
             <p>Calificacion: 4.0✰</p>
             <button class="btn btn-primary">Añadir a Favoritos</button>
-            <button class="btn btn-primary">Detalles</button>
+            <a href="/detalles/Claude" class="btn btn-primary">Detalles</a>
         </article>
         <article class="product">
             <img src="/static/imagenes/BingCreator.jpg" alt="BingCreator.jpg" width="250" height="170">
@@ -128,7 +130,7 @@
             imágenes y texto.</p>
             <p>Calificacion: 4.8✰</p>
             <button class="btn btn-primary">Añadir a Favoritos</button>
-            <button class="btn btn-primary">Detalles</button>
+            <a href="/detalles/BingCreator" class="btn btn-primary">Detalles</a>
         </article>
     </div>
     <div class="d-flex">
@@ -144,7 +146,7 @@
             documentos PDF</p>
             <p>Calificacion: 4.0✰</p>
             <button class="btn btn-primary">Añadir a Favoritos</button>
-            <button class="btn btn-primary">Detalles</button>
+            <a href="/detalles/ChatPDF" class="btn btn-primary">Detalles</a>
         </article>
 
         <article class="product">
@@ -159,12 +161,12 @@
                 de una manera informativa</p>
             <p>Calificacion: 3.8✰</p>
             <button class="btn btn-primary">Añadir a Favoritos</button>
-            <button class="btn btn-primary">Detalles</button>
+            <a href="/detalles/bard" class="btn btn-primary">Detalles</a>
         </article>
 
 
         <article class="product">
-            <img src="/static/imagenes/HumataAi.jpg" alt="HumataAi.jpg" width="250" height="170">
+            <img src="/static/imagenes/HumataAi.jpg" alt="HumataAi.jpg" width="310" height="200">
             <h2>HumataAi</h2>
             <p>es una plataforma de inteligencia artificial(IA)<br>
             que se enfoca en la búsqueda y análisis<br>
@@ -175,7 +177,7 @@
             datos voluminosos</p>
             <p>Calificacion: 4.2✰</p>
             <button class="btn btn-primary">Añadir a Favoritos</button>
-            <button class="btn btn-primary">Detalles</button>
+            <a href="/detalles/HumataAi" class="btn btn-primary">Detalles</a>
         </article>
 
 
@@ -190,7 +192,7 @@
             música clásica, jazz, pop y electrónica</p>
             <p>Calificacion: 2.8✰</p>
             <button class="btn btn-primary">Añadir a Favoritos</button>
-            <button class="btn btn-primary">Detalles</button>
+            <a href="/detalles/AIVA AI" class="btn btn-primary">Detalles</a>
         </article>
 
     </div>
