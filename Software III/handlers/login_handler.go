@@ -51,7 +51,7 @@ func LoguearInvitado(c *gin.Context, db *sql.DB) int {
 	erro := db.QueryRow(consult).Scan(&idInvitado)
 
 	if erro != nil {
-		panic(erro)
+		idInvitado = 0
 	}
 	c.JSON(http.StatusOK, gin.H{"estado": "exito", "mensaje": "Logueando como invitado..."})
 

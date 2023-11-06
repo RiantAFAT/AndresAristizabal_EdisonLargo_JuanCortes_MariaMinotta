@@ -25,11 +25,10 @@ func RegistrarUsuario(c *gin.Context, db *sql.DB) {
 
 	// Ejecuta la consulta
 	var totalIguales int
-	totalIguales = 0
 	erro := db.QueryRow(consult, correo).Scan(&totalIguales)
 
 	if erro != nil {
-		panic(erro)
+		totalIguales = 0
 	}
 	fmt.Print("correos iguales: ", totalIguales, " ")
 
