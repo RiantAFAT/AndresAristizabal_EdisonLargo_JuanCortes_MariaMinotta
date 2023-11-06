@@ -43,19 +43,62 @@
     <div class="login-container">
         <h2 style= "margin-top: 40px";>INICIO DE SESION</h2> 
         
-        <form action="/principal" method="post" style="margin-top: 30px;">
+        <form id="loginForm" action="/loguearUsuario" method="POST" style="margin-top: 30px;">
             <label for="correo">Correo Electronico:</label>
             <input type="email" class="form-control form-control-sm " id="correo" name="correo" required>
-            <label for="contrasena">Contraseña:</label>
-            <input type="password" class="form-control form-control-sm " id="contrasena" name="contrasena" required>
+            <label for="contraseña">Contraseña:</label>
+            <input type="text" class="form-control form-control-sm " id="contraseña" name="contraseña" required>
             
             <button type="submit" class="btn btn-primary boton" style="margin-top: 15px; background-color: #546b96; border: 1px solid #546b96;">Iniciar sesión</button>
             
         </form>
         <div class="centrar-Horizontal">
-            <a href="/principal" class="boton btn btn-primary" style="margin-top: 5px; background-color: #546b96; border: 1px solid #546b96;">Iniciar como Invitado</a>
+            <button id="invitadobtn" class="boton btn btn-primary" style="margin-top: 5px; background-color: #546b96; border: 1px solid #546b96;">Iniciar como Invitado</button>
             <a href="/register" class="btn btn-primary" style="margin-top: 5px; margin-left: 5px; background-color: #546b96; border: 1px solid #546b96;">Registrarse</a>
         </div>
+        <div id="mensaje"></div>
     </div>
+    <script>
+        // Agrega un controlador de eventos al formulario para capturar el envío
+        document.getElementById("loginForm").addEventListener("submit", function(event) {
+            event.preventDefault(); // Evita el envío del formulario por defecto
+    
+            // Realiza la solicitud al servidor
+            fetch("/loguearUsuario", {
+                method: "POST",
+                body: new FormData(event.target), // Envía los datos del formulario
+            })
+            .then(response => response.json())
+            .then(data => {
+                // Muestra un mensaje de confirmación
+                if (data.estado== "exito") {
+                    document.getElementById("mensaje").innerHTML = data.mensaje;
+                    // Redirige a otra página después de 1 segundo
+                    setTimeout(function() {
+                        window.location.href = "principal";
+                    }, 1000);
+                } else if (data.estado== "fallido"){
+                    document.getElementById("mensaje").innerHTML = data.mensaje;
+                }
+            });
+        });
+        //boton de iniciar como invitado
+        document.getElementById("invitadobtn").addEventListener("click", function() {
+        // Realizar solicitud POST al servidor Go
+            fetch("/loguearInvitado", {
+                method: "POST",
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.estado== "exito") {
+                    document.getElementById("mensaje").innerHTML = data.mensaje;
+                    // Redirige a otra página después de 1 segundos
+                    setTimeout(function() {
+                        window.location.href = "principal";
+                    }, 1000);
+                }
+            });
+        });
+    </script>
 </body>
 </html>

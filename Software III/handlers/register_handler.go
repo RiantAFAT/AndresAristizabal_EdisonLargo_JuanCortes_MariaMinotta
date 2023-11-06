@@ -20,14 +20,30 @@ func RegistrarUsuario(c *gin.Context, db *sql.DB) {
 	correo := c.PostForm("correo")
 	contraseña := c.PostForm("contraseña")
 
-	// Realiza la inserción en la base de datos
-	_, err := db.Exec("INSERT INTO Usuario (nombre, correo, contraseña) VALUES (?, ?, ?)", nombre, correo, contraseña)
-	if err != nil {
-		c.String(http.StatusInternalServerError, err.Error())
-		return
-	}
+	// Realiza el conteo en la base de datos
+	consult := "SELECT COUNT(*) FROM Usuario WHERE correo= ?;"
 
+	// Ejecuta la consulta
+	var totalIguales int
+	erro := db.QueryRow(consult, correo).Scan(&totalIguales)
+
+	if erro != nil {
+		totalIguales = 0
+	}
+	fmt.Print("correos iguales: ", totalIguales, " ")
+
+	if totalIguales == 0 {
+		_, err := db.Exec("INSERT INTO Usuario (nombre, correo, contraseña,Rol) VALUES (?, ?, ?,?)", nombre, correo, contraseña, "Registrado")
+		if err != nil {
+			c.String(http.StatusInternalServerError, err.Error())
+			return
+		}
+		fmt.Print("usuario registrado")
+		c.JSON(http.StatusOK, gin.H{"exito": true})
+	} else {
+		c.JSON(http.StatusOK, gin.H{"exito": false})
+
+	}
 	//c.String(http.StatusOK, "Usuario registrado con éxito")
-	fmt.Print("Usuario Registrado con exito")
-	c.Redirect(http.StatusSeeOther, "/login")
+
 }

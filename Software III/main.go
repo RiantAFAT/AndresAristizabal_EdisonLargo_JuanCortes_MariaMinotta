@@ -3,6 +3,7 @@ package main
 import (
 	"ToolHub/handlers"
 	"database/sql"
+	"fmt"
 	"log"
 
 	"github.com/gin-gonic/gin"
@@ -28,6 +29,7 @@ func OpenConnection() (db *sql.DB) {
 }
 
 func main() {
+	var usuarioLog int
 
 	db := OpenConnection()
 
@@ -41,11 +43,17 @@ func main() {
 	r.GET("/register", handlers.RegisterPage)
 	r.GET("/detalles/:nombre", handlers.DetallesPage)
 
-	r.POST("/login", handlers.Login)
 	r.POST("/registrarUsuario", func(c *gin.Context) {
 		handlers.RegistrarUsuario(c, db)
 	})
-	r.POST("/principal", handlers.PrincipalPage)
+	r.POST("/loguearUsuario", func(c *gin.Context) {
+		usuarioLog = handlers.LoguearUsuario(c, db)
+		fmt.Print("usuario logueado: ", usuarioLog, " ")
+	})
+	r.POST("/loguearInvitado", func(c *gin.Context) {
+		usuarioLog = handlers.LoguearInvitado(c, db)
+		fmt.Print("usuario logueado: ", usuarioLog, " ")
+	})
 
 	err := r.Run(":8080")
 	if err != nil {
