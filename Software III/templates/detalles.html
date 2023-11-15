@@ -6,6 +6,9 @@
     <meta charset="UTF-8">
     <title>ToolHub</title>
     <style>
+        body{
+            background-color: rgb(223, 223, 223);
+        }
         .rectangulo {
             width: 100%;
             height: 80px;
@@ -57,18 +60,40 @@
 
     <div class="product-container">
         <div class="product-image">
-            <img src="{{.herramienta.URLImagen}}" alt="{{.herramienta.Nombre}}"  style="width: 500px; height: auto; margin-right: 20px;">
+            <img src="{{.URLImagen}}" alt="{{.Nombre}}"  style="width: 500px; height: auto; margin-right: 20px;">
         </div>
 
         <div class="product-details">
-            <h2>{{.herramienta.Nombre}}</h2>
-            <p>{{.herramienta.Descripcion}}</p>
-            <p>Calificacion: ✰{{.herramienta.Categoria}}</p>
-            <p>Estado: {{.herramienta.Estado}}</p>
-            <p>Lincencia: {{.herramienta.Lincencia}}</p>
-            <p>URL: <a href="{{.herramienta.URL}}" target="_blank">{{.herramienta.URL}}</a></p>
-            <a href="/principal" class="btn btn-primary">volver</a>
+            <h2>{{.Nombre}}</h2>
+            <p>{{.Descripcion}}</p>
+            <p>Categoria: ✰{{.Categoria}}</p>
+            <p>Estado: {{.Estado}}</p>
+            <p>Licencia: {{.Licencia}}</p>
+            <p>URL: <a href="{{.EnlaceOficial}}" target="_blank">{{.EnlaceOficial}}</a></p>
+            <a href="/principal" class="btn btn-primary" style="margin-top: 10px; margin-left: 150px; background-color: #546b96; border: 1px solid #546b96;">Volver</a>
+            <button id="favoritobtn" class="boton btn btn-primary" style="margin-top: 10px; margin-left: 100px; background-color: #546b96; border: 1px solid #546b96;">Añadir a Favoritos</button>
         </div>
+    
     </div>
+    <div id="mensaje" style="color: brown;"></div>
+
+    <script>
+        //boton de iniciar como invitado
+        document.getElementById("favoritobtn").addEventListener("click", function() {
+        // Realizar solicitud POST al servidor Go
+            fetch("/añadirFavorito", {
+                method: "POST",
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.estado== "exito") {
+                    document.getElementById("mensaje").innerHTML = data.mensaje;
+                    
+                }else{
+                    document.getElementById("mensaje").innerHTML = data.mensaje;
+                }
+            });
+        });
+    </script>
 </body>
 </html>
